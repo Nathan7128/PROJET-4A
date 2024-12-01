@@ -1,0 +1,1296 @@
+{
+    "136": {
+        "team_id": 136,
+        "lineup": [
+            {
+                "player_id": 3190,
+                "birth_date": "1994-05-03",
+                "player_gender": "male",
+                "player_height": 182.0,
+                "player_weight": 81.0,
+                "jersey_number": 24,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 17,
+                        "position": "Right Wing",
+                        "from": "00:58:28.268",
+                        "to": null,
+                        "from_period": 2,
+                        "to_period": null,
+                        "start_reason": "Substitution - On (Tactical)",
+                        "end_reason": "Final Whistle",
+                        "counterpart_id": 46009
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 3197,
+                "birth_date": "1983-10-18",
+                "player_gender": "male",
+                "player_height": 188.0,
+                "player_weight": 89.0,
+                "jersey_number": 4,
+                "country": {
+                    "id": 31,
+                    "name": "Brazil"
+                },
+                "positions": [
+                    {
+                        "position_id": 5,
+                        "position": "Left Center Back",
+                        "from": "00:00:00.000",
+                        "to": null,
+                        "from_period": 1,
+                        "to_period": null,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Final Whistle"
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 3546,
+                "birth_date": "1994-08-18",
+                "player_gender": "male",
+                "player_height": 180.0,
+                "player_weight": 73.0,
+                "jersey_number": 11,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 13,
+                        "position": "Right Center Midfield",
+                        "from": "00:00:00.000",
+                        "to": "00:58:35.035",
+                        "from_period": 1,
+                        "to_period": 2,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Tactical Shift"
+                    },
+                    {
+                        "position_id": 15,
+                        "position": "Left Center Midfield",
+                        "from": "00:58:35.035",
+                        "to": "01:11:01.575",
+                        "from_period": 2,
+                        "to_period": 2,
+                        "start_reason": "Tactical Shift",
+                        "end_reason": "Substitution - Off (Tactical)",
+                        "counterpart_id": 35718
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 1,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 4377,
+                "birth_date": "1993-03-04",
+                "player_gender": "male",
+                "player_height": 188.0,
+                "player_weight": 88.0,
+                "jersey_number": 31,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [],
+                "stats": []
+            },
+            {
+                "player_id": 4897,
+                "birth_date": "1997-09-22",
+                "player_gender": "male",
+                "player_height": 173.0,
+                "player_weight": 68.0,
+                "jersey_number": 15,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [],
+                "stats": []
+            },
+            {
+                "player_id": 4909,
+                "birth_date": "1997-01-03",
+                "player_gender": "male",
+                "player_height": 172.0,
+                "player_weight": 68.0,
+                "jersey_number": 7,
+                "country": {
+                    "id": 55,
+                    "name": "C\u00f4te d'Ivoire"
+                },
+                "positions": [
+                    {
+                        "position_id": 21,
+                        "position": "Left Wing",
+                        "from": "00:00:00.000",
+                        "to": null,
+                        "from_period": 1,
+                        "to_period": null,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Final Whistle"
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 1,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 7611,
+                "birth_date": "1998-06-06",
+                "player_gender": "male",
+                "player_height": 174.0,
+                "player_weight": 62.0,
+                "jersey_number": 18,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [],
+                "stats": []
+            },
+            {
+                "player_id": 8534,
+                "birth_date": "1997-01-07",
+                "player_gender": "male",
+                "player_height": 188.0,
+                "player_weight": 73.0,
+                "jersey_number": 8,
+                "country": {
+                    "id": 160,
+                    "name": "Netherlands"
+                },
+                "positions": [
+                    {
+                        "position_id": 10,
+                        "position": "Center Defensive Midfield",
+                        "from": "00:00:00.000",
+                        "to": "01:11:04.335",
+                        "from_period": 1,
+                        "to_period": 2,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Tactical Shift"
+                    },
+                    {
+                        "position_id": 15,
+                        "position": "Left Center Midfield",
+                        "from": "01:11:04.335",
+                        "to": null,
+                        "from_period": 2,
+                        "to_period": null,
+                        "start_reason": "Tactical Shift",
+                        "end_reason": "Final Whistle"
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 11532,
+                "birth_date": "1999-12-30",
+                "player_gender": "male",
+                "player_height": 192.0,
+                "player_weight": 88.0,
+                "jersey_number": 6,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 3,
+                        "position": "Right Center Back",
+                        "from": "00:00:00.000",
+                        "to": null,
+                        "from_period": 1,
+                        "to_period": null,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Final Whistle"
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 1,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 22072,
+                "birth_date": "2001-03-26",
+                "player_gender": "male",
+                "player_height": 192.0,
+                "player_weight": 80.0,
+                "jersey_number": 19,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 15,
+                        "position": "Left Center Midfield",
+                        "from": "00:00:00.000",
+                        "to": "00:58:33.611",
+                        "from_period": 1,
+                        "to_period": 2,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Substitution - Off (Injury)",
+                        "counterpart_id": 32015
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 29305,
+                "birth_date": "1998-09-29",
+                "player_gender": "male",
+                "player_height": 177.0,
+                "player_weight": 67.0,
+                "jersey_number": 23,
+                "country": {
+                    "id": 221,
+                    "name": "Switzerland"
+                },
+                "positions": [
+                    {
+                        "position_id": 2,
+                        "position": "Right Back",
+                        "from": "00:00:00.000",
+                        "to": "01:17:31.069",
+                        "from_period": 1,
+                        "to_period": 2,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Substitution - Off (Tactical)",
+                        "counterpart_id": 117109
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 31030,
+                "birth_date": "1999-10-04",
+                "player_gender": "male",
+                "player_height": 199.0,
+                "player_weight": 99.0,
+                "jersey_number": 1,
+                "country": {
+                    "id": 182,
+                    "name": "Poland"
+                },
+                "positions": [
+                    {
+                        "position_id": 1,
+                        "position": "Goalkeeper",
+                        "from": "00:00:00.000",
+                        "to": null,
+                        "from_period": 1,
+                        "to_period": null,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Final Whistle"
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 32015,
+                "birth_date": "1999-09-23",
+                "player_gender": "male",
+                "player_height": 175.0,
+                "player_weight": 61.0,
+                "jersey_number": 28,
+                "country": {
+                    "id": 4,
+                    "name": "Algeria"
+                },
+                "positions": [
+                    {
+                        "position_id": 13,
+                        "position": "Right Center Midfield",
+                        "from": "00:58:33.611",
+                        "to": null,
+                        "from_period": 2,
+                        "to_period": null,
+                        "start_reason": "Substitution - On (Injury)",
+                        "end_reason": "Final Whistle",
+                        "counterpart_id": 22072
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 33221,
+                "birth_date": "2000-11-06",
+                "player_gender": "male",
+                "player_height": 173.0,
+                "player_weight": 65.0,
+                "jersey_number": 26,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 6,
+                        "position": "Left Back",
+                        "from": "00:00:00.000",
+                        "to": null,
+                        "from_period": 1,
+                        "to_period": null,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Final Whistle"
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 34335,
+                "birth_date": "1999-05-25",
+                "player_gender": "male",
+                "player_height": 188.0,
+                "player_weight": 87.0,
+                "jersey_number": 9,
+                "country": {
+                    "id": 166,
+                    "name": "Nigeria"
+                },
+                "positions": [
+                    {
+                        "position_id": 23,
+                        "position": "Center Forward",
+                        "from": "00:00:00.000",
+                        "to": "01:10:56.698",
+                        "from_period": 1,
+                        "to_period": 2,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Substitution - Off (Tactical)",
+                        "counterpart_id": 45189
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 35718,
+                "birth_date": "1998-10-27",
+                "player_gender": "male",
+                "player_height": 183.0,
+                "player_weight": null,
+                "jersey_number": 55,
+                "country": {
+                    "id": 37,
+                    "name": "Burundi"
+                },
+                "positions": [
+                    {
+                        "position_id": 10,
+                        "position": "Center Defensive Midfield",
+                        "from": "01:11:01.575",
+                        "to": null,
+                        "from_period": 2,
+                        "to_period": null,
+                        "start_reason": "Substitution - On (Tactical)",
+                        "end_reason": "Final Whistle",
+                        "counterpart_id": 3546
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 45189,
+                "birth_date": "2001-07-01",
+                "player_gender": "male",
+                "player_height": 185.0,
+                "player_weight": 79.0,
+                "jersey_number": 29,
+                "country": {
+                    "id": 55,
+                    "name": "C\u00f4te d'Ivoire"
+                },
+                "positions": [
+                    {
+                        "position_id": 23,
+                        "position": "Center Forward",
+                        "from": "01:10:56.698",
+                        "to": null,
+                        "from_period": 2,
+                        "to_period": null,
+                        "start_reason": "Substitution - On (Tactical)",
+                        "end_reason": "Final Whistle",
+                        "counterpart_id": 34335
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 1,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 46009,
+                "birth_date": "2004-01-19",
+                "player_gender": "male",
+                "player_height": 182.0,
+                "player_weight": 66.0,
+                "jersey_number": 25,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 17,
+                        "position": "Right Wing",
+                        "from": "00:00:00.000",
+                        "to": "00:58:28.268",
+                        "from_period": 1,
+                        "to_period": 2,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Substitution - Off (Tactical)",
+                        "counterpart_id": 3190
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 97751,
+                "birth_date": "2002-12-12",
+                "player_gender": "male",
+                "player_height": 170.0,
+                "player_weight": 59.0,
+                "jersey_number": 27,
+                "country": {
+                    "id": 202,
+                    "name": "Senegal"
+                },
+                "positions": [],
+                "stats": []
+            },
+            {
+                "player_id": 117109,
+                "birth_date": "2004-05-27",
+                "player_gender": "male",
+                "player_height": 187.0,
+                "player_weight": 75.0,
+                "jersey_number": 33,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 2,
+                        "position": "Right Back",
+                        "from": "01:17:31.069",
+                        "to": null,
+                        "from_period": 2,
+                        "to_period": null,
+                        "start_reason": "Substitution - On (Tactical)",
+                        "end_reason": "Final Whistle",
+                        "counterpart_id": 29305
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            }
+        ],
+        "formations": [
+            {
+                "period": 1,
+                "timestamp": "00:00:00.000",
+                "reason": "Starting XI",
+                "formation": 433
+            }
+        ],
+        "events": [
+            {
+                "period": 1,
+                "timestamp": "00:00:00.000",
+                "type": "Half Start"
+            },
+            {
+                "player_id": 3546,
+                "player_name": "Morgan Sanson",
+                "period": 1,
+                "timestamp": "00:21:54.115",
+                "type": "Shot",
+                "outcome": "Goal"
+            },
+            {
+                "period": 1,
+                "timestamp": "00:46:16.828",
+                "type": "Half End"
+            },
+            {
+                "period": 2,
+                "timestamp": "00:45:00.000",
+                "type": "Half Start"
+            },
+            {
+                "player_id": 4909,
+                "player_name": "Jeremie Boga",
+                "period": 2,
+                "timestamp": "00:52:53.697",
+                "type": "Shot",
+                "outcome": "Goal"
+            },
+            {
+                "player_id": 11532,
+                "player_name": "Jean-Clair Todibo",
+                "period": 2,
+                "timestamp": "01:27:59.248",
+                "type": "Ground Pass",
+                "outcome": "Assist"
+            },
+            {
+                "player_id": 45189,
+                "player_name": "Evann Guessand",
+                "period": 2,
+                "timestamp": "01:28:00.947",
+                "type": "Shot",
+                "outcome": "Goal"
+            },
+            {
+                "period": 2,
+                "timestamp": "01:35:06.750",
+                "type": "Half End"
+            }
+        ]
+    },
+    "165": {
+        "team_id": 165,
+        "lineup": [
+            {
+                "player_id": 3261,
+                "birth_date": "1994-07-17",
+                "player_gender": "male",
+                "player_height": 185.0,
+                "player_weight": 85.0,
+                "jersey_number": 5,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 8,
+                        "position": "Left Wing Back",
+                        "from": "01:01:52.536",
+                        "to": null,
+                        "from_period": 2,
+                        "to_period": null,
+                        "start_reason": "Substitution - On (Tactical)",
+                        "end_reason": "Final Whistle",
+                        "counterpart_id": 134916
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 3955,
+                "birth_date": "1994-08-17",
+                "player_gender": "male",
+                "player_height": 185.0,
+                "player_weight": 77.0,
+                "jersey_number": 14,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 11,
+                        "position": "Left Defensive Midfield",
+                        "from": "00:00:00.000",
+                        "to": null,
+                        "from_period": 1,
+                        "to_period": null,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Final Whistle"
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 4255,
+                "birth_date": "1998-06-12",
+                "player_gender": "male",
+                "player_height": 177.0,
+                "player_weight": 75.0,
+                "jersey_number": 17,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 9,
+                        "position": "Right Defensive Midfield",
+                        "from": "01:29:09.383",
+                        "to": null,
+                        "from_period": 2,
+                        "to_period": null,
+                        "start_reason": "Substitution - On (Tactical)",
+                        "end_reason": "Final Whistle",
+                        "counterpart_id": 25043
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 7570,
+                "birth_date": "1993-11-04",
+                "player_gender": "male",
+                "player_height": 185.0,
+                "player_weight": 82.0,
+                "jersey_number": 15,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [],
+                "stats": []
+            },
+            {
+                "player_id": 8870,
+                "birth_date": "1993-09-05",
+                "player_gender": "male",
+                "player_height": 196.0,
+                "player_weight": 83.0,
+                "jersey_number": 1,
+                "country": {
+                    "id": 202,
+                    "name": "Senegal"
+                },
+                "positions": [],
+                "stats": []
+            },
+            {
+                "player_id": 11467,
+                "birth_date": "1994-06-06",
+                "player_gender": "male",
+                "player_height": 188.0,
+                "player_weight": 88.0,
+                "jersey_number": 38,
+                "country": {
+                    "id": 221,
+                    "name": "Switzerland"
+                },
+                "positions": [
+                    {
+                        "position_id": 1,
+                        "position": "Goalkeeper",
+                        "from": "00:00:00.000",
+                        "to": null,
+                        "from_period": 1,
+                        "to_period": null,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Final Whistle"
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 11811,
+                "birth_date": "2000-11-28",
+                "player_gender": "male",
+                "player_height": 170.0,
+                "player_weight": 62.0,
+                "jersey_number": 21,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 20,
+                        "position": "Left Attacking Midfield",
+                        "from": "00:00:00.000",
+                        "to": null,
+                        "from_period": 1,
+                        "to_period": null,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Final Whistle"
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 25043,
+                "birth_date": "1999-05-01",
+                "player_gender": "male",
+                "player_height": 178.0,
+                "player_weight": 65.0,
+                "jersey_number": 6,
+                "country": {
+                    "id": 154,
+                    "name": "Morocco"
+                },
+                "positions": [
+                    {
+                        "position_id": 9,
+                        "position": "Right Defensive Midfield",
+                        "from": "00:00:00.000",
+                        "to": "01:29:09.383",
+                        "from_period": 1,
+                        "to_period": 2,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Substitution - Off (Tactical)",
+                        "counterpart_id": 4255
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 30193,
+                "birth_date": "1997-08-29",
+                "player_gender": "male",
+                "player_height": 178.0,
+                "player_weight": 78.0,
+                "jersey_number": 24,
+                "country": {
+                    "id": 52,
+                    "name": "Congo, (Kinshasa)"
+                },
+                "positions": [
+                    {
+                        "position_id": 7,
+                        "position": "Right Wing Back",
+                        "from": "01:02:40.321",
+                        "to": null,
+                        "from_period": 2,
+                        "to_period": null,
+                        "start_reason": "Substitution - On (Tactical)",
+                        "end_reason": "Final Whistle",
+                        "counterpart_id": 406328
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 32108,
+                "birth_date": "1998-06-26",
+                "player_gender": "male",
+                "player_height": 179.0,
+                "player_weight": 75.0,
+                "jersey_number": 27,
+                "country": {
+                    "id": 24,
+                    "name": "Benin"
+                },
+                "positions": [
+                    {
+                        "position_id": 18,
+                        "position": "Right Attacking Midfield",
+                        "from": "01:17:33.801",
+                        "to": null,
+                        "from_period": 2,
+                        "to_period": null,
+                        "start_reason": "Substitution - On (Tactical)",
+                        "end_reason": "Final Whistle",
+                        "counterpart_id": 151922
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 32190,
+                "birth_date": "2000-09-22",
+                "player_gender": "male",
+                "player_height": 177.0,
+                "player_weight": 65.0,
+                "jersey_number": 12,
+                "country": {
+                    "id": 39,
+                    "name": "Cameroon"
+                },
+                "positions": [],
+                "stats": []
+            },
+            {
+                "player_id": 39595,
+                "birth_date": "2001-01-02",
+                "player_gender": "male",
+                "player_height": 191.0,
+                "player_weight": 76.0,
+                "jersey_number": 13,
+                "country": {
+                    "id": 202,
+                    "name": "Senegal"
+                },
+                "positions": [
+                    {
+                        "position_id": 3,
+                        "position": "Right Center Back",
+                        "from": "00:00:00.000",
+                        "to": null,
+                        "from_period": 1,
+                        "to_period": null,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Final Whistle"
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 45979,
+                "birth_date": "2003-03-28",
+                "player_gender": "male",
+                "player_height": 206.0,
+                "player_weight": 98.0,
+                "jersey_number": 95,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 5,
+                        "position": "Left Center Back",
+                        "from": "00:00:00.000",
+                        "to": null,
+                        "from_period": 1,
+                        "to_period": null,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Final Whistle"
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 65435,
+                "birth_date": "2001-05-22",
+                "player_gender": "male",
+                "player_height": 194.0,
+                "player_weight": 85.0,
+                "jersey_number": 4,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [],
+                "stats": []
+            },
+            {
+                "player_id": 134916,
+                "birth_date": "2002-10-01",
+                "player_gender": "male",
+                "player_height": 165.0,
+                "player_weight": 52.0,
+                "jersey_number": 37,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 8,
+                        "position": "Left Wing Back",
+                        "from": "00:00:00.000",
+                        "to": "01:01:52.536",
+                        "from_period": 1,
+                        "to_period": 2,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Substitution - Off (Tactical)",
+                        "counterpart_id": 3261
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 151922,
+                "birth_date": "2004-11-19",
+                "player_gender": "male",
+                "player_height": 176.0,
+                "player_weight": null,
+                "jersey_number": 44,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 18,
+                        "position": "Right Attacking Midfield",
+                        "from": "00:00:00.000",
+                        "to": "01:17:33.801",
+                        "from_period": 1,
+                        "to_period": 2,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Substitution - Off (Tactical)",
+                        "counterpart_id": 32108
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 287426,
+                "birth_date": "2002-08-21",
+                "player_gender": "male",
+                "player_height": 191.0,
+                "player_weight": null,
+                "jersey_number": 32,
+                "country": {
+                    "id": 86,
+                    "name": "Ghana"
+                },
+                "positions": [
+                    {
+                        "position_id": 4,
+                        "position": "Center Back",
+                        "from": "00:00:00.000",
+                        "to": null,
+                        "from_period": 1,
+                        "to_period": null,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Final Whistle"
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 391397,
+                "birth_date": "2006-06-23",
+                "player_gender": "male",
+                "player_height": 179.0,
+                "player_weight": null,
+                "jersey_number": 22,
+                "country": {
+                    "id": 78,
+                    "name": "France"
+                },
+                "positions": [
+                    {
+                        "position_id": 23,
+                        "position": "Center Forward",
+                        "from": "01:01:47.073",
+                        "to": null,
+                        "from_period": 2,
+                        "to_period": null,
+                        "start_reason": "Substitution - On (Tactical)",
+                        "end_reason": "Final Whistle",
+                        "counterpart_id": 405154
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 405154,
+                "birth_date": "2001-12-10",
+                "player_gender": "male",
+                "player_height": 185.0,
+                "player_weight": null,
+                "jersey_number": 9,
+                "country": {
+                    "id": 55,
+                    "name": "C\u00f4te d'Ivoire"
+                },
+                "positions": [
+                    {
+                        "position_id": 23,
+                        "position": "Center Forward",
+                        "from": "00:00:00.000",
+                        "to": "01:01:47.073",
+                        "from_period": 1,
+                        "to_period": 2,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Substitution - Off (Tactical)",
+                        "counterpart_id": 391397
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            },
+            {
+                "player_id": 406328,
+                "birth_date": "2001-07-05",
+                "player_gender": "male",
+                "player_height": 187.0,
+                "player_weight": null,
+                "jersey_number": 7,
+                "country": {
+                    "id": 88,
+                    "name": "Greece"
+                },
+                "positions": [
+                    {
+                        "position_id": 7,
+                        "position": "Right Wing Back",
+                        "from": "00:00:00.000",
+                        "to": "01:02:40.321",
+                        "from_period": 1,
+                        "to_period": 2,
+                        "start_reason": "Starting XI",
+                        "end_reason": "Substitution - Off (Tactical)",
+                        "counterpart_id": 30193
+                    }
+                ],
+                "stats": {
+                    "own_goals": 0,
+                    "goals": 0,
+                    "assists": 0,
+                    "penalties_scored": 0,
+                    "penalties_missed": 0,
+                    "penalties_saved": 0
+                }
+            }
+        ],
+        "formations": [
+            {
+                "period": 1,
+                "timestamp": "00:00:00.000",
+                "reason": "Starting XI",
+                "formation": 3421
+            }
+        ],
+        "events": [
+            {
+                "period": 1,
+                "timestamp": "00:00:00.000",
+                "type": "Half Start"
+            },
+            {
+                "player_id": 405154,
+                "player_name": "Mohamed Bamba",
+                "period": 1,
+                "timestamp": "00:05:16.403",
+                "type": "Foul Committed",
+                "outcome": "Yellow Card"
+            },
+            {
+                "period": 1,
+                "timestamp": "00:46:16.828",
+                "type": "Half End"
+            },
+            {
+                "period": 2,
+                "timestamp": "00:45:00.000",
+                "type": "Half Start"
+            },
+            {
+                "player_id": 151922,
+                "player_name": "Ayman Kari",
+                "period": 2,
+                "timestamp": "00:56:15.696",
+                "type": "Foul Committed",
+                "outcome": "Yellow Card"
+            },
+            {
+                "period": 2,
+                "timestamp": "01:35:06.750",
+                "type": "Half End"
+            }
+        ]
+    }
+}
