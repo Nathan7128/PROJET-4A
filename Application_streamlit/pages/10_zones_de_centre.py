@@ -1,3 +1,10 @@
+########################################################### INTRODUCTION ############################################################################
+# Cette page a pour but d'étudier les centres des équipes disponibles, et en particulier les zones de départ des centre, leur zone de
+# réception, 
+#
+#
+
+
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # 1) Importation des bibliothèques, fonctions et variables
 
@@ -368,51 +375,107 @@ st.divider()
 
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Dans le cas ou une zone a été sélectionnée sur la Heatmap de gauche : filtre du dataframe des zones de réceptions de centre et
-# possibilité de choisir une zone sur la Heatmap de droite pour laquelle afficher les positions de départ et d'arrivée des tirs.
+# 11) Cas ou l'utilisateur a choisi une zone en particulier sur la Heatmap de gauche
+# C'est à dire qu'il a choisi une ligne et une colonne > 0
 
-df_recep_select = centres.copy()
+# Création d'un dataframe "centres_zone_select" qui permettra d'afficher les zones de réception des centres sur la Heatmap de droite
+# De base, il est égal au dataframe contenant l'ensemble des centres. Cependant, dans le cas ou l'utilisateur a sélectionné une zone en
+# particulier sur la Heatmap de gauche, alors ce dataframe ne contiendra que les centres provenant de la zone sélectionnée.
+# Ce dataframe contient les informations sur les positions ("x_loc" et "y_loc") de départ des centres, ainsi que leur position de
+# réception ("x_pass", "y_pass")
+centres_zone_select = centres.copy()
+
+# Création du dataframe "df_shot_select" qui permettra d'afficher les tirs qui se sont déroulés dans les "nb_events_suivant" events
+# suivant les centres provenant de la zone sélectionnée sur la Heatmap de gauche.
+# Il est initialisé comme un dataframe vide, car il contiendra des données seulement dans le cas ou l'utilisateur a bien choisi une
+# zone sur la Heatmap de gauche. Si l'utilisateur n'en a pas choisie, alors nous n'affichons pas les tirs
 df_shot_select = pd.DataFrame()
 
+# On vérifie que l'utilisateur ait choisi une zone sur la Heatmap de gauche
 if (choix_ligne_gauche != 0) & (choix_col_gauche != 0) :
 
-    df_recep_select = centres[(centres.x_loc >= (60 + (60/nb_lignes_gauche)*(choix_ligne_gauche - 1))) &
-                    (centres.x_loc < (60 + (60/nb_lignes_gauche)*(choix_ligne_gauche))) &
-                    (centres.y_loc >= (80/nb_col_gauche)*(choix_col_gauche - 1)) &
-                    (centres.y_loc < (80/nb_col_gauche)*(choix_col_gauche))]
+    # a) Sélection des centres provenant de la zone sélectionnée
+
+    # Calcul du "x" minimum de la zone sélectionnée
+    x_min_zone_gauche = 60 + (60/nb_lignes_gauche)*(choix_ligne_gauche - 1)
+    # Calcul du "x" maximum de la zone sélectionnée
+    x_max_zone_gauche = 60 + (60/nb_lignes_gauche)*(choix_ligne_gauche)
+    # Calcul du "y" minimum de la zone sélectionnée
+    y_min_zone_gauche = (80/nb_col_gauche)*(choix_col_gauche - 1)
+    # Calcul du "y" maximum de la zone sélectionnée
+    y_max_zone_gauche = (80/nb_col_gauche)*(choix_col_gauche)
+
+    # Filtre des centres provenant de la zone sélectionnée
+    centres_zone_select = centres[(centres.x_loc >= x_min_zone_gauche) & (centres.x_loc < x_max_zone_gauche) &
+                                  (centres.y_loc >= y_min_zone_gauche) & (centres.y_loc < y_max_zone_gauche)]
     
+    # b) Sélection des tirs effectués suite aux centres réalisés dans la zone sélectionnée sur la Heatmap de gauche
+    # On récupère tous les events du dataframe "zones_de_centre" qui sont associés aux "centre_id" présents dans le dataframe
+    # "centres_zone_select". En d'autre termes, le dataframe "df_shot_select" contiendra tous les events suivant les centres effectués
+    # dans la zone sélectionnée sur la Heatmap de gauche
+    df_shot_select = zones_de_centre.loc[centres_zone_select.index]
+
+    # Pour ce dataframe, on ne souhaite garder que les events liés à des tirs, c'est à dire toutes les lignes du dataframe pour
+    # lesquelles la valeur de la colonne "Tireur" correspond à un joueur
+    df_shot_select = df_shot_select[df_shot_select.Tireur != ""]
+
+    # Enfin, dans le cas ou l'utilisateur a choisi de garder uniquement les centres ayant amené à un but, on considère qu'il souhaite
+    # également conserver que les tirs qui ont terminé au fond des filets, on filtre donc le dataframe "df_shot_select"
+    if choix_centre_but :
+        df_shot_select = df_shot_select[df_shot_select.But == "Oui"]
+    
+    # c) Choix d'une zone sur la Heatmap de droite
+    # Si l'utilisateur a choisi une zone sur la Heatmap de gauche, c'est à dire s'il a décidé d'afficher, sur la Heatmap de droite, les
+    # zones de réception des centres venant uniquement de la zone sélectionnée sur la Heatmap de gauche, alors il pourra choisir sur
+    # la Heatmap de droite une zone afin d'afficher les tirs effectués dans cette zone sur une nouvelle Heatmap (en bas à gauche)
+    # Il est important de noté que les tirs gardés seront ceux qui sont à la fois localisés dans la zone sélectionnée sur la
+    # Heatmap de droite, et à la fois associés (qui suivent) un centre effectué depuis la zone sélectionnée sur la Heatmap de gauche
     with columns[1] :
 
+        # Choix de la colonne de la zone à sélectionner sur la Heatmap de droite
         push_session_state("choix_col_droite", min(nb_col_droite, get_session_state("choix_col_droite")))
         load_session_state("choix_col_droite")
         choix_col_droite = st.number_input("Choisir une colonne pour la Heatmap de droite", min_value = 0, step = 1,
             max_value = nb_col_droite, **key_widg("choix_col_droite"))
         
+        # Choix de la ligne de la zone à sélectionner sur la Heatmap de droite
         push_session_state("choix_ligne_droite", min(nb_lignes_droite, get_session_state("choix_ligne_droite")))
         load_session_state("choix_ligne_droite")
         choix_ligne_droite = st.number_input("Choisir une ligne pour la Heatmap de droite", min_value = 0, step = 1,
             max_value = nb_lignes_droite, **key_widg("choix_ligne_droite"))
-
-    df_shot_select = df.loc[df_recep_select.index]
-    df_shot_select = df_shot_select[df_shot_select.Tireur != ""]
     
-    if choix_centre_but :
-        df_shot_select = df_shot_select[df_shot_select.But == "Oui"]
-    
+    # d) Filtre des tirs effectués dans la zone sélectionnée sur la Heatmap de droite (dans le cas ou l'utilisateur a bien choisi une
+    # zone)
     if (choix_ligne_droite != 0) & (choix_col_droite != 0) :
-        df_shot_select = df_shot_select[(df_shot_select.x_loc >= (60 + (60/nb_lignes_droite)*(choix_ligne_droite - 1))) &
-                        (df_shot_select.x_loc < (60 + (60/nb_lignes_droite)*(choix_ligne_droite))) &
-                        (df_shot_select.y_loc >= (80/nb_col_droite)*(choix_col_droite - 1)) &
-                        (df_shot_select.y_loc < (80/nb_col_droite)*(choix_col_droite))]
 
-if len(df_recep_select) == 0 :
+        # Calcul du "x" minimum de la zone sélectionnée sur la Heatmap de droite
+        x_min_zone_droite = 60 + (60/nb_lignes_droite)*(choix_ligne_droite - 1)
+        # Calcul du "x" maximum de la zone sélectionnée sur la Heatmap de droite
+        x_max_zone_droite = 60 + (60/nb_lignes_droite)*(choix_ligne_droite)
+        # Calcul du "y" minimum de la zone sélectionnée sur la Heatmap de droite
+        y_min_zone_droite = (80/nb_col_droite)*(choix_col_droite - 1)
+        # Calcul du "y" maximum de la zone sélectionnée sur la Heatmap de droite
+        y_max_zone_droite = (80/nb_col_droite)*(choix_col_droite)
+
+        # Filtre des tirs réalisés dans la zone sélectionnée sur la Heatmap de droite
+        df_shot_select = df_shot_select[(df_shot_select.x_loc >= x_min_zone_droite) & (df_shot_select.x_loc < x_max_zone_droite) &
+                        (df_shot_select.y_loc >= y_min_zone_droite) & (df_shot_select.y_loc < y_max_zone_droite)]
+
+# Dans le cas ou l'utilisateur a choisi une zone sur la Heatmap de gauche dans laquelle aucun centre n'a été effectué, alors on fixe
+# la valeur "Aucune valeur" pour le type de comptage de la Heatmap de droite, c'est à dire qu'il n'y aura rien d'afficher dans cette
+# Heatmap.
+if len(centres_zone_select) == 0 :
     type_compt_droite = "Aucune valeur"
 
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Affichage du titre
+# 12) Affichage du titre des graphiques (un seul titre pour toutes les Heatmaps)
+# Ce titre contient les groupes/équipes et saisons sélectionnés
 
 
+# a) Création de la chaine de caractère pour écrire les saisons sélectionnées à l'écran
+
+# Liste contenant les saisons sélectionnées, dans l'ordre chronologique
 choix_saisons = sorted(choix_saisons)
 
 bool_taille_saison = (len(choix_saisons) > 1)
@@ -420,14 +483,19 @@ saison_title = []
 saison_title.append(f'la saison {choix_saisons[0]}')
 saison_title.append(f'les saisons {", ".join(choix_saisons[:-1])} et {choix_saisons[-1]}')
 
+# b) Création de la chaine de caractère pour écrire les groupes/saisons sélectionnés à l'écran
+
+# Pour les groupes
 if choix_categorie == "Choisir Top/Middle/Bottom" :
     bool_taille_groupe = 0
     grp_title = [groupe_select]
 
+# Pour les équipes
 else :
     bool_taille_groupe = (len(equipes_select) > 1)
     grp_title = [f'{equipes_select[0]}', f'{", ".join(equipes_select[:-1])} et {equipes_select[-1]}']
 
+# c) Affichage du titre
 st.markdown(f"<p style='text-align: center;'>Heatmap {dico_label[choix_categorie][0]} {grp_title[bool_taille_groupe]} sur {saison_title[bool_taille_saison]}</p>",
                 unsafe_allow_html=True)
 
@@ -436,7 +504,7 @@ st.markdown(f"<p style='text-align: center;'>Heatmap {dico_label[choix_categorie
 # Affichage des heatmaps
 
 
-fig_centre, fig_recep, ax_centre, ax_recep = heatmap_centre(centres, df_recep_select, nb_col_gauche, nb_lignes_gauche, nb_col_droite,
+fig_centre, fig_recep, ax_centre, ax_recep = heatmap_centre(centres, centres_zone_select, nb_col_gauche, nb_lignes_gauche, nb_col_droite,
                                             nb_lignes_droite, type_compt_gauche, type_compt_droite, liste_type_compt)
 
 if (choix_col_gauche != 0) & (choix_ligne_gauche != 0) :
