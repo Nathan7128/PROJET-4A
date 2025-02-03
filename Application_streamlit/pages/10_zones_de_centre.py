@@ -18,8 +18,8 @@ import matplotlib.patches as patches
 import sqlite3
 from functools import partial
 
-from fonction import execute_SQL, load_session_state, key_widg, init_session_state, filtre_session_state, push_session_state, get_session_state, heatmap_centre
-from variable import dico_classement_SB, dico_label, taille_groupes, nb_events_suivant
+from fonctions import execute_SQL, load_session_state, key_widg, init_session_state, filtre_session_state, push_session_state, get_session_state, heatmap_zones_de_centre, heatmap_zones_de_recep
+from variables import dico_classement_SB, dico_label, taille_groupes, nb_events_suivant
 
 # Index slicer pour la sélection de donnée sur les dataframes avec multi-index
 idx = pd.IndexSlice
@@ -246,7 +246,7 @@ if choix_categorie == "Choisir Top/Middle/Bottom" and groupe_select != "Global" 
 # Cas ou l'utilisateur a décidé d'étudier des équipes en particulier
 elif (choix_categorie == "Choisir équipe") :
     # Filtrage du dataframe en ne gardant que les équipes sélectionnées
-    zones_de_centre = zones_de_centre.loc[:, liste_equipes, :]
+    zones_de_centre = zones_de_centre.loc[:, equipes_select, :]
 
 # Nous n'avons dorénavant plus besoin d'utiliser le couple ("Saison", "Équipe") comme index du dataframe, nous allons donc redéfinir
 # ces variables en tant que colonne et mettre la variable "centre_id" comme index
@@ -385,11 +385,11 @@ st.divider()
 # réception ("x_pass", "y_pass")
 centres_zone_select = centres.copy()
 
-# Création du dataframe "df_shot_select" qui permettra d'afficher les tirs qui se sont déroulés dans les "nb_events_suivant" events
+# Création du dataframe "tirs_select" qui permettra d'afficher les tirs qui se sont déroulés dans les "nb_events_suivant" events
 # suivant les centres provenant de la zone sélectionnée sur la Heatmap de gauche.
 # Il est initialisé comme un dataframe vide, car il contiendra des données seulement dans le cas ou l'utilisateur a bien choisi une
 # zone sur la Heatmap de gauche. Si l'utilisateur n'en a pas choisie, alors nous n'affichons pas les tirs
-df_shot_select = pd.DataFrame()
+tirs_select = pd.DataFrame()
 
 # On vérifie que l'utilisateur ait choisi une zone sur la Heatmap de gauche
 if (choix_ligne_gauche != 0) & (choix_col_gauche != 0) :
@@ -411,23 +411,23 @@ if (choix_ligne_gauche != 0) & (choix_col_gauche != 0) :
     
     # b) Sélection des tirs effectués suite aux centres réalisés dans la zone sélectionnée sur la Heatmap de gauche
     # On récupère tous les events du dataframe "zones_de_centre" qui sont associés aux "centre_id" présents dans le dataframe
-    # "centres_zone_select". En d'autre termes, le dataframe "df_shot_select" contiendra tous les events suivant les centres effectués
+    # "centres_zone_select". En d'autre termes, le dataframe "tirs_select" contiendra tous les events suivant les centres effectués
     # dans la zone sélectionnée sur la Heatmap de gauche
-    df_shot_select = zones_de_centre.loc[centres_zone_select.index]
+    tirs_select = zones_de_centre.loc[centres_zone_select.index]
 
     # Pour ce dataframe, on ne souhaite garder que les events liés à des tirs, c'est à dire toutes les lignes du dataframe pour
     # lesquelles la valeur de la colonne "Tireur" correspond à un joueur
-    df_shot_select = df_shot_select[df_shot_select.Tireur != ""]
+    tirs_select = tirs_select[tirs_select.Tireur != ""]
 
     # Enfin, dans le cas ou l'utilisateur a choisi de garder uniquement les centres ayant amené à un but, on considère qu'il souhaite
-    # également conserver que les tirs qui ont terminé au fond des filets, on filtre donc le dataframe "df_shot_select"
+    # également conserver que les tirs qui ont terminé au fond des filets, on filtre donc le dataframe "tirs_select"
     if choix_centre_but :
-        df_shot_select = df_shot_select[df_shot_select.But == "Oui"]
+        tirs_select = tirs_select[tirs_select.But == "Oui"]
     
     # c) Choix d'une zone sur la Heatmap de droite
     # Si l'utilisateur a choisi une zone sur la Heatmap de gauche, c'est à dire s'il a décidé d'afficher, sur la Heatmap de droite, les
     # zones de réception des centres venant uniquement de la zone sélectionnée sur la Heatmap de gauche, alors il pourra choisir sur
-    # la Heatmap de droite une zone afin d'afficher les tirs effectués dans cette zone sur une nouvelle Heatmap (en bas à gauche)
+    # la Heatmap de droite une zone afin d'afficher les tirs effectués dans cette zone sur un nouveau graphique (en bas à gauche)
     # Il est important de noté que les tirs gardés seront ceux qui sont à la fois localisés dans la zone sélectionnée sur la
     # Heatmap de droite, et à la fois associés (qui suivent) un centre effectué depuis la zone sélectionnée sur la Heatmap de gauche
     with columns[1] :
@@ -457,9 +457,9 @@ if (choix_ligne_gauche != 0) & (choix_col_gauche != 0) :
         # Calcul du "y" maximum de la zone sélectionnée sur la Heatmap de droite
         y_max_zone_droite = (80/nb_col_droite)*(choix_col_droite)
 
-        # Filtre des tirs réalisés dans la zone sélectionnée sur la Heatmap de droite
-        df_shot_select = df_shot_select[(df_shot_select.x_loc >= x_min_zone_droite) & (df_shot_select.x_loc < x_max_zone_droite) &
-                        (df_shot_select.y_loc >= y_min_zone_droite) & (df_shot_select.y_loc < y_max_zone_droite)]
+        # Filtre des tirs réalisés dans la zone sélectionnée sur la Heatmap de droite (zones de réception de centre)
+        tirs_select = tirs_select[(tirs_select.x_loc >= x_min_zone_droite) & (tirs_select.x_loc < x_max_zone_droite) &
+                        (tirs_select.y_loc >= y_min_zone_droite) & (tirs_select.y_loc < y_max_zone_droite)]
 
 # Dans le cas ou l'utilisateur a choisi une zone sur la Heatmap de gauche dans laquelle aucun centre n'a été effectué, alors on fixe
 # la valeur "Aucune valeur" pour le type de comptage de la Heatmap de droite, c'est à dire qu'il n'y aura rien d'afficher dans cette
@@ -492,6 +492,8 @@ if choix_categorie == "Choisir Top/Middle/Bottom" :
 
 # Pour les équipes
 else :
+    # On modifie le type actuel des équipes (entier correspondant au "team_id_SB") en chaine de caractère
+    equipes_select = [str(team_id_SB) for team_id_SB in equipes_select]
     bool_taille_groupe = (len(equipes_select) > 1)
     grp_title = [f'{equipes_select[0]}', f'{", ".join(equipes_select[:-1])} et {equipes_select[-1]}']
 
@@ -501,38 +503,79 @@ st.markdown(f"<p style='text-align: center;'>Heatmap {dico_label[choix_categorie
 
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Affichage des heatmaps
+# 13) Création de la Heatmap de gauche (zones de départ des centres) et celle de droite (zones de réception des centres)
 
 
-fig_centre, fig_recep, ax_centre, ax_recep = heatmap_centre(centres, centres_zone_select, nb_col_gauche, nb_lignes_gauche, nb_col_droite,
-                                            nb_lignes_droite, type_compt_gauche, type_compt_droite, liste_type_compt)
+# a) Affichage de la Heatmap de gauche
 
+# On créé la figure et l'axe Matplotlib liés à la Heatmap de gauche, afin d'afficher cette dernière.
+# La figure et l'axe sont obtenus comme résultat de la fonction "heatmap_zones_de_centre", implémentée dans le programme "fonctions.py"
+fig_zones_centre, axe_zones_centre = heatmap_zones_de_centre(centres, nb_col_gauche, nb_lignes_gauche, type_compt_gauche,
+                                                            liste_type_compt)
+
+# b) Affichage de la Heatmap de droite
+
+# On créé la figure et l'axe Matplotlib liés à la Heatmap de droite, afin d'afficher cette dernière.
+# La figure et l'axe sont obtenus comme résultat de la fonction "heatmap_zones_de_recep", implémentée dans le programme "fonctions.py"
+fig_zones_recep, axe_zones_recep = heatmap_zones_de_recep(centres_zone_select, nb_col_droite, nb_lignes_droite, type_compt_droite,
+                                                            liste_type_compt)
+
+
+# ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 14) Modélisation des zones sélectionnées sur les deux Heatmap par l'utilisateur
+# Dans le cas ou l'utilisateur a sélectionné une zone, on la modélise par un rectangle rouge (de la taille de la zone) sur la Heatmap
+
+
+# a) Cas ou l'utilisateur a choisi une zone sur la Heatmap de gauche
 if (choix_col_gauche != 0) & (choix_ligne_gauche != 0) :
+    # Création du rectangle modélisant la sélection
     rect = patches.Rectangle(((80/nb_col_gauche)*(choix_col_gauche - 1), 60 + (60/nb_lignes_gauche)*(choix_ligne_gauche - 1)),
                                 80/nb_col_gauche, 60/nb_lignes_gauche, linewidth=5, edgecolor='r', facecolor='r', alpha=0.6)
-    ax_centre.add_patch(rect)
+    
+    # Ajout du rectangle à la Heatmap
+    axe_zones_centre.add_patch(rect)
 
+    # b) Cas ou l'utilisateur a choisi une zone sur la Heatmap de droite
     if (choix_ligne_droite != 0) & (choix_col_droite != 0) :
+        # Création du rectangle modélisant la sélection
         rect = patches.Rectangle(((80/nb_col_droite)*(choix_col_droite - 1), 60 + (60/nb_lignes_droite)*(choix_ligne_droite - 1)),
                                     80/nb_col_droite, 60/nb_lignes_droite, linewidth=5, edgecolor='r', facecolor='r', alpha=0.6)
-        ax_recep.add_patch(rect)
+        
+        # Ajout du rectangle à la Heatmap
+        axe_zones_recep.add_patch(rect)
+
+
+# ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 15) Affichage des Heatmaps dans l'application
+
 
 columns = st.columns(2, vertical_alignment = "top", gap = "large")
 
+# a) Heatmap de gauche
 with columns[0] :
-    st.pyplot(fig_centre)
+    st.pyplot(fig_zones_centre)
 
+# b) Heatmap de droite
 with columns[1] :
-    st.pyplot(fig_recep)
+    st.pyplot(fig_zones_recep)
 
+# c) Affichage du nombre total de centres présents dans les données filtrées par l'utilisateur (en fonction de la saison, du groupe, etc)
 st.markdown(f"<p style='text-align: center;'>Nombre total de centres : {len(centres)}</p>", unsafe_allow_html=True)
 
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Affichage des positions des tirs dans le cas ou une zone de réception a été sélectionnée
+# 16) Affichage de la position des tirs
+# Dans le cas ou l'utilisateur a choisi une zone sur la Heatmap de gauche, alors nous affichons, sur un graphique en dessous, la position
+# des tirs qui ont suivis les centres réalisés dans la zone sélectionnée.
+# Ces tirs sont affichés sous forme de flèche, qui modélisent leur trajectoire.
+# Les flèches rouges correspondent à des tirs normaux, les flèches bleues correspondent à des buts.
+# Si en plus, l'utilisateur a choisi une zone sur la Heatmap de droite, alors on ne garde que les tirs qui ont été effectués dans la
+# zone de réception de centre sélectionnée.
 
 
-if len(df_shot_select) == 0 :
+# Si aucun tir n'a suivi les centres sélectionnés (dans les "nb_events_suivant" events suivant ces centres), alors ça ne sert à rien
+# d'afficher le graphique de la trajectoire des tirs
+if len(tirs_select) == 0 :
     st.stop()
 
 st.divider()
@@ -541,24 +584,35 @@ columns = st.columns(2, vertical_alignment = "bottom", gap = "large")
 
 with columns[0] :
     
-    pitch = VerticalPitch(pitch_type='statsbomb', line_zorder=1, pitch_color=None, line_color = "green", half = True,
+    # Création du terrain vertical sur lequel seront modélisés les tirs
+    pitch_tirs = VerticalPitch(pitch_type='statsbomb', line_zorder=1, pitch_color=None, line_color = "green", half = True,
             linewidth = 1.5, spot_scale = 0.002, goal_type = "box")
 
-    fig_shot, ax_shot = pitch.draw(constrained_layout=True, tight_layout=False)
+    # On récupère la figure et l'axe Matplotlib associés à ce terrain
+    fig_tirs, axe_tirs = pitch_tirs.draw(constrained_layout=True, tight_layout=False)
 
-    ax_shot.set_ylim(min(df_shot_select.x_loc) - 5, 125)
+    # On délimite (verticalement) le terrain : on le coupe juste en dessous du tir ayant la position de départ la plus basse sur le terrain
+    axe_tirs.set_ylim(min(tirs_select.x_loc) - 5, 125)
     
-    arrows_color = pd.Series("red", index = df_shot_select.index)
-    arrows_color[df_shot_select.But == "Oui"] = "blue"
+    # Création d'une Série Pandas de même longueur que le nombre de tirs recensés. Chaque ligne de la série indique la couleur du tir
+    # (bleue si c'est un but, et rouge sinon). De base, tous les tirs sont rouges
+    couleur_fleches = pd.Series("red", index = tirs_select.index)
 
-    pitch.arrows(df_shot_select.x_loc, df_shot_select.y_loc, df_shot_select.x_shot, df_shot_select.y_shot, color = arrows_color, ax = ax_shot,
-                 width = 1)
+    # Modification de la couleur pour les tirs qui sont des buts
+    couleur_fleches[tirs_select.But == "Oui"] = "blue"
 
-    st.pyplot(fig_shot)
+    # Affichage des flèches sur le terrain "pitch_tirs"
+    pitch_tirs.arrows(tirs_select.x_loc, tirs_select.y_loc, tirs_select.x_shot, tirs_select.y_shot, color = couleur_fleches,
+                      ax = axe_tirs, width = 1)
+
+    # Affichage du terrain
+    st.pyplot(fig_tirs)
 
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Affichage des positions des tirs dans la cage dans le cas ou une zone de réception a été sélectionnée
+# 17) Affichage de la destination des tirs dans les cages
+# En plus d'afficher un graphique avec les trajectoires des tirs suivant les centres filtrés, nous affichons leur destination dans
+# les cages du gardien, sur un graphique en bas à droite.
 
 
 with columns[1] :
@@ -587,21 +641,21 @@ with columns[1] :
     y_lim_max = 2.67 + rapport_dim
     ax_cage.set_ylim(y_lim_min, y_lim_max)
 
-    df_shot_select_cage = df_shot_select[(~df_shot_select.z_shot.isna()) & (df_shot_select.x_shot > 120 - rapport_dim) &
-        (df_shot_select.y_shot > x_lim_min + rayon_ballon) & (df_shot_select.y_shot < x_lim_max - rayon_ballon)
-        & (df_shot_select.z_shot < y_lim_max - rayon_ballon)]
+    tirs_select_cage = tirs_select[(~tirs_select.z_shot.isna()) & (tirs_select.x_shot > 120 - rapport_dim) &
+        (tirs_select.y_shot > x_lim_min + rayon_ballon) & (tirs_select.y_shot < x_lim_max - rayon_ballon)
+        & (tirs_select.z_shot < y_lim_max - rayon_ballon)]
     
-    shot_color = pd.Series("red", index = df_shot_select_cage.index)
-    shot_color[df_shot_select_cage.But == "Oui"] = "blue"
+    shot_color = pd.Series("red", index = tirs_select_cage.index)
+    shot_color[tirs_select_cage.But == "Oui"] = "blue"
 
-    ax_cage.scatter(df_shot_select_cage["y_shot"], df_shot_select_cage["z_shot"], s = 27**2, marker = "o", edgecolors = "black",
+    ax_cage.scatter(tirs_select_cage["y_shot"], tirs_select_cage["z_shot"], s = 27**2, marker = "o", edgecolors = "black",
                     lw = 2, color = shot_color)
 
     st.pyplot(fig_cage)
 
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Affichage des informations sur les tirs venant de la zone de centre sélectionnée dans le cas ou une équipe a été sélectionnée
+# 18) Affichage des informations sur les tirs venant de la zone de centre sélectionnée dans le cas ou une équipe a été sélectionnée
 
 
 if choix_categorie == "Choisir équipe" :
@@ -610,6 +664,7 @@ if choix_categorie == "Choisir équipe" :
 
     expander = st.expander("Tableau des tirs/buts pour la zone sélectionnée sur la Heatmap de gauche")
 
-    with expander :        
-        st.dataframe(df_shot_select[["Date", "Journée", "Domicile", "Extérieur", "Minute", "Centreur", "But", "Tireur", "Équipe"]],
+    with expander :
+        tirs_select.reset_index(inplace = True)
+        st.dataframe(tirs_select[["Date", "Journée", "Domicile", "Extérieur", "Minute", "Centreur", "But", "Tireur", "Équipe"]],
                      hide_index = True)
