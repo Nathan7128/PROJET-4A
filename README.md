@@ -116,4 +116,10 @@ Par exemple, si on se trouve à la racine du projet dans un terminal, on doit ta
 
 ## *Images*
 
-![Image1](assets/images/image1.png)
+
+
+<ins>Image1</ins> : ![](assets/images/image1.png)
+
+<ins>Image2</ins> : ![](assets/images/image2.png)
+
+<ins>Image3</ins> : ![](assets/images/image3.png)
