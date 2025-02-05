@@ -15,6 +15,10 @@ Pour utiliser ce conteneur, il faut :
 4) Se placer dans à la racine du projet (le dossier dans contenant le repository, normalement nommé "PROJET-4A"
 5) Créer l'image Docker avec la commande : "docker build -t *tag_image_docker* ." (par exemple "docker build -t docker_projet_4a .")
 6) Lancer le conteneur avec la commande : "docker run -p 8501:8501 *tag_image_docker*" (par exemple "docker run -p 8501:8501 docker_projet_4a")
+7) Si une fenêtre de sécurité s'affiche, cliquer sur "Autoriser"
+8) Pour lancer l'application dans le navigateur, cliquer sur le lien "Local URL" dans le terminal ou bien aller au lien "http://localhost:8501".
+
+Vous êtes désormais en capacité d'utiliser l'application via le conteneur Docker.
 
 
 ## 2) Utiliser et modifier les différents programmes du projet
