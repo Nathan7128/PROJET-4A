@@ -1,3 +1,19 @@
-Projet_centres_data
-env_PROJET
-Databases/raw-database.db
+# TRAITEMENT DES DONNÉES
+
+
+# Données brutes
+Traitement_donnees/Importation_donnees/Projet_centres_data
+
+# Environnement virtuel pour le traitement des données
+Traitement_donnees/env_traitement
+
+# Base de données brutes
+Traitement_donnees/Importation_donnees/raw-database.db
+
+
+
+# APPLICATION STREAMLIT
+
+
+# Environnement virtuel pour l'application Streamlit
+Application_streamlit/env_app

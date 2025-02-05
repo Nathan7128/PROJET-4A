@@ -28,7 +28,7 @@ Cette clé globale correspond au paramètre "key_init" de ces fonctions"""
 
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Définitions des fonctions génériques
+# Définition des fonctions génériques
 
 
 def load_session_state(key_init, suffixe) :

@@ -17,16 +17,8 @@ from matplotlib.colors import LinearSegmentedColormap
 # Variable qui permet de définir le nombre d'events suivant les centres que l'on souhaite étudier
 nb_events_suivant = 5
 
-# Dictionnaire contenant pour chaque saison le classement de ligue 2 avec les noms d'équipe au format Skill Corner
-dico_rank_SK = {
-    "2023/2024" : ["AJ Auxerre", "Angers SCO", "AS Saint-Étienne", "Rodez Aveyron", "Paris FC", "SM Caen",
-                   "Stade Lavallois Mayenne FC", "Amiens Sporting Club", "En Avant de Guingamp", "Pau FC", "Grenoble Foot 38",
-                   "Girondins de Bordeaux", "SC Bastia", "FC Annecy", "AC Ajaccio", "Dunkerque", "ES Troyes AC", "US Quevilly-Rouen",
-                   "US Concarneau", "Valenciennes FC"]
-                   }
 
-
-# Dictionnaire contenant pour chaque saison le classement de ligue 2 avec les noms d'équipe au format Stats Bomb
+# Dictionnaire contenant pour chaque saison le classement de ligue 2 avec les team id Stats Bomb des équipes
 dico_classement_SB = {
     "2023/2024" : [131, 129, 153, 143, 136, 137, 168, 147, 156, 134, 130, 139, 138, 144, 164, 141, 165, 152]
                    }

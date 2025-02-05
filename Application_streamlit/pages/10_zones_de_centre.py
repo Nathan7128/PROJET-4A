@@ -1,8 +1,10 @@
 ########################################################### INTRODUCTION ############################################################################
 # Cette page a pour but d'étudier les centres des équipes disponibles, et en particulier les zones de départ des centre, leur zone de
-# réception, 
-#
-#
+# réception, les trajectoires des tirs suivant les centres disponibles, ainsi que obtenir diverses informations sur les centres d'une
+# ou plusieurs équipes en particulier.
+# Pour afficher les zones de centres et leur zone de réception, nous utilisons des Heatmap (cartes de chaleur), que nous implémentons
+# grâce à la bibliothèque "mplsoccer", qui est une bibliothèque graphique, dérivée de Matplotlib, et qui permet d'illustrer des
+# graphiques liés au Foot.
 
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -29,7 +31,7 @@ idx = pd.IndexSlice
 # 2) Connexion à la base de données traitées "database.db"
 
 
-connect = sqlite3.connect("Databases/database.db")
+connect = sqlite3.connect("database.db")
 cursor = connect.cursor()
 
 
@@ -250,8 +252,7 @@ elif (choix_categorie == "Choisir équipe") :
 
 # Nous n'avons dorénavant plus besoin d'utiliser le couple ("Saison", "Équipe") comme index du dataframe, nous allons donc redéfinir
 # ces variables en tant que colonne et mettre la variable "centre_id" comme index
-zones_de_centre.set_index("centre_id", append = True, inplace = True)
-
+zones_de_centre = zones_de_centre.reset_index().set_index("centre_id")
 
 # Nous créons maintenant un nouveau dataframe ne contenant que les events correspondant à des centres du dataframe "zones_de_centre"
 centres = zones_de_centre[zones_de_centre.Centre == 1]
@@ -267,38 +268,48 @@ if len(centres) == 0 :
 
 columns = st.columns(2, vertical_alignment = "center", gap = "large")
 
-with columns[0] :
-    # a) Sélection des centres ayant amené à des buts
-    load_session_state("choix_centre_but")
-    choix_centre_but = st.checkbox(f"Filter les centres ayant amenés à un but (dans les {nb_events_suivant} évènements suivants le centre)",
-                                   **key_widg("choix_centre_but"))
-    
-    # b) Choix d'afficher tous les centres du même coté sur la Heatmap de gauche
+with columns[0] :    
+    # a) Choix d'afficher tous les centres du même coté sur la Heatmap de gauche
     load_session_state("choix_sym_gauche")
     if st.checkbox("Afficher tous les centres du même coté sur la Heatmap de gauche", **key_widg("choix_sym_gauche")) :
         # Dans le cas ou l'utilisateur a choisi la cette option, on effectue la symétrie des coordonnées des centres ayant été effectués
         # sur la moitié droite du terrain (quand leur position "y_loc" est > 40)
         centres.loc[centres.y_loc > 40, ["y_loc", "y_pass"]] = 80 - centres.loc[centres.y_loc > 40, ["y_loc", "y_pass"]]
     
-    # c) Choix de la partie du corps utilisée pour le centre
+    # b) Choix de la partie du corps utilisée pour le centre
     load_session_state("partie_du_corps")
     partie_du_corps = st.selectbox("Partie du corps utilisée pour centrer", ["Pied gauche", "Pied droit", "All"],
                     **key_widg("partie_du_corps"))
+    
+    # c) Choix du nombre d'adversaires entre le ballon et le but sur l'event précédant le centre
+    # On permet à l'utilisateur de choisir un nombre minimum et maximum d'adversaires entre le ballon et le but
 
-# Filtre du dataframe pour ne garder que les centres ayant amené à un but si l'utilisateur a sélectionné cette option
-if choix_centre_but :
-    centres = centres[centres.But == "Oui"]
+    # Importation des données sur le nombre d'adversaires entre le ballon et le but
+    params = centres.event_id.tolist()
+    stat = f"SELECT * FROM nb_adv_ballon_but WHERE event_id IN ({', '.join('?' * len(params))})"
+    res, desc = execute_SQL(cursor, stat, params)
+    nb_adv_ballon_but = pd.DataFrame(res)
+    nb_adv_ballon_but.columns = [i[0] for i in desc]
 
-# Filtre du dataframe pour ne garder que les centres ayant été effectué du pied droit si l'utilisateur a sélectionné cette option
-if partie_du_corps == "Pied droit" :
-    centres = centres[centres["Partie du corps"] == "Right Foot"]
+    # Jointure avec le dataframe "centres" par rapport à l'"event_id"
+    centres = pd.merge(centres.reset_index(), nb_adv_ballon_but, on = "event_id").set_index("centre_id")
 
-# Filtre du dataframe pour ne garder que les centres ayant été effectué du pied gauche si l'utilisateur a sélectionné cette option
-elif partie_du_corps == "Pied gauche" :
-    centres = centres[centres["Partie du corps"] == "Left Foot"]
+    nb_adv_max = max(centres.nb_adv_ballon_but)
+    init_session_state("nb_adv_ballon_but", (0, nb_adv_max))
+    load_session_state("nb_adv_ballon_but")
+    choix_nb_adv_ballon_but = st.slider("Choisir le nombre d'adversaires entre le ballon et le but sur l'event précédant le centre",
+        min_value = 0, max_value = nb_adv_max, **key_widg("nb_adv_ballon_but"))
+    
+    choix_nb_adv_min = choix_nb_adv_ballon_but[0]
+    choix_nb_adv_max = choix_nb_adv_ballon_but[1]
+    
 
-with columns[1] :
-    # d) Choix de la façon de compter les centres pour l'affichage des Heatmaps (en pourcentage, en comptant le nombre total, etc)
+with columns[1] :    
+    # d) Sélection des centres ayant amené à des buts
+    load_session_state("choix_centre_but")
+    choix_centre_but = st.checkbox(f"Filter les centres ayant amenés à un but (dans les {nb_events_suivant} évènements suivants le centre)",
+                                   **key_widg("choix_centre_but"))
+    # e) Choix de la façon de compter les centres pour l'affichage des Heatmaps (en pourcentage, en comptant le nombre total, etc)
     # On définit une liste "liste_type_compt" qui stocke tous les types de comptages possibles.
     # En fonction de si l'utilisateur a choisi l'option "choix_centre_but" ou non, l'utilisateur pourra afficher le pourcentage de
     # centre ayant amené à des buts pour chaque zone quadrillée de la Heatmap
@@ -312,6 +323,28 @@ with columns[1] :
     # Choix de la façon de compter pour la Heatmap de droite
     load_session_state("type_compt_droite")
     type_compt_droite = st.selectbox("Type de comptage Heatmap de droite", liste_type_compt, **key_widg("type_compt_droite"))
+
+
+# Filtrage des centres après le choix de l'utilisateur pour cette option
+filtre_nb_adv = (centres.nb_adv_ballon_but >= choix_nb_adv_min) & (centres.nb_adv_ballon_but <= choix_nb_adv_max)
+centres = centres.loc[filtre_nb_adv]
+
+# Filtre du dataframe pour ne garder que les centres ayant amené à un but si l'utilisateur a sélectionné cette option
+if choix_centre_but :
+    centres = centres[centres.But == "Oui"]
+
+# Filtre du dataframe pour ne garder que les centres ayant été effectué du pied droit si l'utilisateur a sélectionné cette option
+if partie_du_corps == "Pied droit" :
+    centres = centres[centres["Partie du corps"] == "Right Foot"]
+
+# Filtre du dataframe pour ne garder que les centres ayant été effectué du pied gauche si l'utilisateur a sélectionné cette option
+elif partie_du_corps == "Pied gauche" :
+    centres = centres[centres["Partie du corps"] == "Left Foot"]
+
+# On stop la suite du programme s'il n'y a pas de centre correspondant aux critères choisis par l'utilisateur
+if len(centres) == 0 :
+    st.stop()
+
 
 st.divider()
 
