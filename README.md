@@ -10,10 +10,11 @@ En effet, pour run, l'application à seulement besoin de données stockées dans
 Afin de faire fonctionner l'application sur n'importe quel système d'exploitation, sur n'importe quel PC, nous avons mit en place un conteneur **DOCKER**, c'est-à-dire que nous avons créé un "Dockerfile".  
 Pour utiliser ce conteneur, il faut :
 1) Avoir Docker installer sur son pc
-2) Ouvrir un terminal
-3) Se placer dans à la racine du projet (le dossier dans contenant le repository, normalement nommé "PROJET-4A"
-4) Créer l'image Docker avec la commande : "docker build -t *tag_image_docker* ." (par exemple "docker build -t docker_projet_4a .")
-5) Lancer le conteneur avec la commande : "docker run -p 8501:8501 *tag_image_docker*" (par exemple "docker run -p 8501:8501 docker_projet_4a")
+2) Lancer le logiciel Docker Desktop
+3) Ouvrir un terminal
+4) Se placer dans à la racine du projet (le dossier dans contenant le repository, normalement nommé "PROJET-4A"
+5) Créer l'image Docker avec la commande : "docker build -t *tag_image_docker* ." (par exemple "docker build -t docker_projet_4a .")
+6) Lancer le conteneur avec la commande : "docker run -p 8501:8501 *tag_image_docker*" (par exemple "docker run -p 8501:8501 docker_projet_4a")
 
 
 ## 2) Utiliser et modifier les différents programmes du projet
