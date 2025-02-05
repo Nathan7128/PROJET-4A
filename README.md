@@ -41,6 +41,7 @@ f) Sélectionner l'environnement "Python (env_traitement)"
 
 Après avoir réalisé toutes ces étapes, vous devriez être en mesure d'exécuter tous les scripts de ce dossier, de les modifier, etc.
 
+
 ### B) Application Streamlit
 
 1) Ouvrir un terminal de commande (par exemple celui dans VS Code)
@@ -56,3 +57,40 @@ c) Cliquer sur "Enter interpreter path..."
 d) Entrer : "Application_streamlit\env_app\Scripts\python.exe"
 
 Après avoir réalisé toutes ces étapes, vous devriez être en mesure d'exécuter tous les scripts de ce dossier, de les modifier, etc.
+
+
+### <ins> Spécificités de la partie "Traitement des données" </ins>
+
+Pour traiter des données, il faut donc des données brutes (à traiter).  
+Dans notre cas, nous avions des données fournies par le Clermont Foot (cf. le rapport du projet pour plus de spécification sur ces données brutes).  
+Ce sont donc ces données que nous avons utilisées avec les programmes du dossier "Traitement_donnees".
+
+De base, ces données nous ont été fournies sous forme de fichier "json", stockés dans le dossier "Projet_centres_data" du dossier "Importation_donnees".  
+Cependant, étant donné la taille de ces données, nous avons caché le dossier "Projet_centres_data" à l'aide du "gitignore".
+
+Nous avons décidé d'importer ces données et de les stockées dans une base de données "raw-database.db", localisée elle aussi dans le dossier "Importation_donnees".  
+Étant donné sa taille, nous avons aussi placé cette BDD dans le fichier "gitignore".
+
+Dans le cas ou vous disposez du même dossier "Projet_centre_data" que nous, vous aurez juste à le placer dans le dossier "Projet_centres_data".  
+De plus, il est important de supprimer tous les fichiers de données corrompus, dont le nom commence par "._".  
+Ces fichiers dupliqués et corrompus proviennent d’une erreur de compatibilité Mac/Windows.
+
+Vous pourrez ensuite exécuter le fichier "importation.ipynb" du dossier "Importation_donnees" afin d'obtenir la base de données brutes "raw-database.db".  
+Vous devrez ensuite exécuter les différents programmes de transformation de données, présents dans le dossier "Transformation_donnees", afin de construire la base de données transformées "database.db", utilisée par l'application Streamlit.
+
+Dans le cas ou vous n'auriez pas à disposition le dossier "Projet_centre_data", vous devrez donc adapter les différents codes afin de les rendre comptatibles avec vos données.
+
+
+### <ins> Spécificités de la partie "Application Streamlit" </ins>
+
+Pour fonctionner, l'application Streamlit utilise les données de la BDD "database.db".  
+Cette BDD est localisée dans le dossier "Application_streamlit", et elle n'est pas placée dans le fichier "gitignore", afin de pouvoir utilisée l'application après l'avoir récupérée sur son PC, sans devoir exécuter les programmes de la partie "Traitement des données".  
+Afin de lancer l'application Streamlit en local, il faut :
+1) Ouvrir un terminal
+2) Se placer dans le dossier "Application_streamlit" à l'aide de la commande "cd"
+3) Activer l'environnement virtuel "env_app" : env_app\Scripts\activate
+4) Lancer l'application : streamlit run Main.py
+
+Ces deux BDD sont créées grâce au SBGB SQLite. Elles peuvent être visualiser sur dans un navigateur, en local, grâce à l'api "sqlite-web", que nous avons incluse dans les 2 environnement virtuels.  
+Afin de visualiser ces BDD, il faut exécuter la commande suivante "sqlite-web *nomBDD.db*" dans un terminal.  
+Par exemple, si on se trouve à la racine du projet dans un terminal, on doit taper : "sqlite_web .\Application_streamlit\database.db"
