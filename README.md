@@ -1,6 +1,19 @@
 # Comment prendre en main le projet ?
 
+Nous allons vous expliquer comment utiliser ce projet après avoir cloner ce repository en local sur son PC.
+
+
 ## 1) Faire fonctionner l'application avec Docker
+
+Tel qu'est implémenté ce projet/repository, il est possible de faire fonctionner l'application Streamlit sans aucune exécution de programme ou manipulation de données.  
+En effet, pour run, l'application à seulement besoin de données stockées dans une base de données nommée "database.db", située dans le dossier "Application_streamlit".  
+Afin de faire fonctionner l'application sur n'importe quel système d'exploitation, sur n'importe quel PC, nous avons mit en place un conteneur **DOCKER**, c'est-à-dire que nous avons créé un "Dockerfile".  
+Pour utiliser ce conteneur, il faut :
+1) Avoir Docker installer sur son pc
+2) Ouvrir un terminal
+3) Se placer dans à la racine du projet (le dossier dans contenant le repository, normalement nommé "PROJET-4A"
+4) Créer l'image Docker avec la commande : "docker build -t *tag_image_docker* ." (par exemple "docker build -t docker_projet_4a .")
+5) Lancer le conteneur avec la commande : "docker run -p 8501:8501 *tag_image_docker*" (par exemple "docker run -p 8501:8501 docker_projet_4a")
 
 
 ## 2) Utiliser et modifier les différents programmes du projet
