@@ -30,4 +30,6 @@ Voici les étapes à suivre pour mettre en place les environnements virtuels :
 4) Activer l'environnement virtuel : env_traitement\Scripts\activate
 5) Installer les librairies présentes dans le fichier requirements.txt : pip install -r .\requirements.txt
 6) Ajouter l'environnement virtuel comme noyau Jupyter (en effet, nous travaillons avec des scripts Jupyter Notebook) : python -m ipykernel install --user --name=env_traitement --display-name "Python (env_traitement)"
-7) Pour l'ensemble des scripts Jupyter Notebook de ce dossier, sélectionner l'environnement virtuel "env_traitement" comme noyau
+7) Pour l'ensemble des scripts Jupyter Notebook de ce dossier, sélectionner l'environnement virtuel "env_traitement" comme noyau.
+Pour ce faire
+8) aa
