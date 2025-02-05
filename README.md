@@ -112,3 +112,8 @@ Afin de lancer l'application Streamlit en local, il faut :
 Ces deux BDD sont créées grâce au SBGB SQLite. Elles peuvent être visualiser dans un navigateur, en local, grâce à l'API "sqlite-web" que nous avons incluse dans les 2 environnement virtuels.  
 Afin de visualiser ces BDD, il faut exécuter la commande suivante "sqlite-web *nomBDD.db*" dans un terminal.  
 Par exemple, si on se trouve à la racine du projet dans un terminal, on doit taper : "sqlite_web .\Application_streamlit\database.db"
+
+
+## *Images*
+
+![Image1](assets/images/image1.png)
