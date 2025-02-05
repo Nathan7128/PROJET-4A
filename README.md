@@ -31,13 +31,13 @@ Voici les étapes à suivre pour mettre en place les environnements virtuels :
 5) Installer les librairies présentes dans le fichier requirements.txt : pip install -r .\requirements.txt
 6) Ajouter l'environnement virtuel comme noyau Jupyter (en effet, nous travaillons avec des scripts Jupyter Notebook) : python -m ipykernel install --user --name=env_traitement --display-name "Python (env_traitement)"
 7) Pour l'ensemble des scripts Jupyter Notebook de ce dossier, sélectionner l'environnement virtuel "env_traitement" comme noyau.  
-Pour ce faire, pour chaque fichier ".ipynb", il faut :
-a) Ouvir le script (dans VS Code)
-b) Cliquer sur "Detecting Kernels" en haut à droite (cf. image2)
-c) Cliquer sur "Select Another Kernel..."
-d) Cliquer sur "Jupyter Kernel..."
-e) Si l'environnement "Python (env_traitement)" ne s'affiche pas, appuyer sur le bouton pour rafraichir la liste des environnements. Sinon, essayer de fermer le projet, relancer VS Code, et réessayer.
-f) Sélectionner l'environnement "Python (env_traitement)"
+Pour ce faire, pour chaque fichier ".ipynb", il faut :  
+a) Ouvir le script (dans VS Code)  
+b) Cliquer sur "Detecting Kernels" en haut à droite (cf. image2)  
+c) Cliquer sur "Select Another Kernel..."  
+d) Cliquer sur "Jupyter Kernel..."  
+e) Si l'environnement "Python (env_traitement)" ne s'affiche pas, appuyer sur le bouton pour rafraichir la liste des environnements. Sinon, essayer de fermer le projet, relancer VS Code, et réessayer.  
+f) Sélectionner l'environnement "Python (env_traitement)"  
 
 Après avoir réalisé toutes ces étapes, vous devriez être en mesure d'exécuter tous les scripts de ce dossier, de les modifier, etc.
 
@@ -48,11 +48,11 @@ Après avoir réalisé toutes ces étapes, vous devriez être en mesure d'exécu
 3) Créer dans ce dossier "Application_streamlit" l'environnement virtuel vide : python -m venv env_app
 4) Activer l'environnement virtuel : env_app\Scripts\activate
 5) Installer les librairies présentes dans le fichier requirements.txt : pip install -r .\requirements.txt
-6) Ajouter l'environnement virtuel comme noyau Jupyter : python -m ipykernel install --user --name=env_app --display-name "Python (env_app)"
-7) Pour l'ensemble des scripts Python (nous travaillons avec des fichiers ".py" pour cette partie), sélectionner cet environnement comme interpreteur :
-a) Cliquer sur "view" en haut de l'écran (cf. image3) et sélectionner "Command Palette..."
-b) Chercher et sélectionner "Python: Select Interpreter"
-c) Cliquer sur "Enter interpreter path..."
+6) Ajouter l'environnement virtuel comme noyau Jupyter : python -m ipykernel install --user --name=env_app --display-name "Python (env_app) 
+7) Pour l'ensemble des scripts Python (nous travaillons avec des fichiers ".py" pour cette partie), sélectionner cet environnement comme interpreteur :  
+a) Cliquer sur "view" en haut de l'écran (cf. image3) et sélectionner "Command Palette..."  
+b) Chercher et sélectionner "Python: Select Interpreter"  
+c) Cliquer sur "Enter interpreter path..."  
 d) Entrer : "Application_streamlit\env_app\Scripts\python.exe"
 
 Après avoir réalisé toutes ces étapes, vous devriez être en mesure d'exécuter tous les scripts de ce dossier, de les modifier, etc.
