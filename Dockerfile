@@ -1,6 +1,8 @@
-FROM python:3.12.6
+FROM python:3.12-slim
 
-WORKDIR Application_streamlit
+RUN apt-get update && apt-get install -y git
+
+WORKDIR /Application_streamlit
 
 ADD Application_streamlit/ .
 
