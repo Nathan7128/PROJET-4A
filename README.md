@@ -47,7 +47,8 @@ Voici les étapes à suivre pour mettre en place les environnements virtuels :
 3) Créer dans ce dossier "Traitement_donnees" l'environnement virtuel vide : python -m venv env_traitement
 4) Activer l'environnement virtuel : env_traitement\Scripts\activate
 5) Installer les librairies présentes dans le fichier requirements.txt : pip install -r .\requirements.txt
-6) Pour l'ensemble des scripts Jupyter Notebook de ce dossier, sélectionner l'environnement virtuel "env_traitement" comme noyau.  
+6) Ajouter l'environnement virtuel comme noyau Jupyter (en effet, nous travaillons avec des scripts Jupyter Notebook) : python -m ipykernel install --user --name=env_traitement --display-name "Python (env_traitement)"
+7) Pour l'ensemble des scripts Jupyter Notebook de ce dossier, sélectionner l'environnement virtuel "env_traitement" comme noyau.  
 Pour ce faire, pour chaque fichier ".ipynb", il faut :  
 a) Ouvir le script (dans VS Code)  
 b) Cliquer sur "Detecting Kernels" en haut à droite (cf. image2)  
