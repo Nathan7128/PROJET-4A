@@ -67,8 +67,7 @@ Après avoir réalisé toutes ces étapes, vous devriez être en mesure d'exécu
 3) Créer dans ce dossier "Application_streamlit" l'environnement virtuel vide : python -m venv env_app
 4) Activer l'environnement virtuel : env_app\Scripts\activate
 5) Installer les librairies présentes dans le fichier requirements.txt : pip install -r .\requirements.txt
-6) Ajouter l'environnement virtuel comme noyau Jupyter : python -m ipykernel install --user --name=env_app --display-name "Python (env_app) 
-7) Pour l'ensemble des scripts Python (nous travaillons avec des fichiers ".py" pour cette partie), sélectionner cet environnement comme interpreteur :  
+6) Pour l'ensemble des scripts Python (nous travaillons avec des fichiers ".py" pour cette partie), sélectionner cet environnement comme interpreteur :  
 a) Cliquer sur "view" en haut de l'écran (cf. image3) et sélectionner "Command Palette..."  
 b) Chercher et sélectionner "Python: Select Interpreter"  
 c) Cliquer sur "Enter interpreter path..."  
